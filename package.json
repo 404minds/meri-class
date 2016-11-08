@@ -1,0 +1,28 @@
+{
+  "name": "meri-class",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/404minds/meri-class.git"
+  },
+  "author": "Rinki Agarwal",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/404minds/meri-class/issues"
+  },
+  "homepage": "https://github.com/404minds/meri-class#readme",
+  "dependencies": {
+    "bcryptjs": "^2.3.0",
+    "body-parser": "^1.15.2",
+    "express": "^4.14.0",
+    "express-jwt": "^5.0.0",
+    "jsonwebtoken": "^7.1.9",
+    "mongoose": "^4.6.6",
+    "nodemon": "^1.11.0"
+  }
+}
