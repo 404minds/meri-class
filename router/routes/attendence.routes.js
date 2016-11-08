@@ -1,6 +1,5 @@
 var express = require('express');
 var router = express.Router();
-var bcrypt = require('bcryptjs');
 var AttendenceModel = require('./../../models/attendence.model');
 
 router.post('/', function(req, res) {
