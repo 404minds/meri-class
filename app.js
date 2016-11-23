@@ -17,7 +17,7 @@ app
       '/api/token',
       '/api/user',
       '/api/student',
-      '/api/attendence'
+      '/api/attendence',
     ],
   }));
 

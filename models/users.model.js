@@ -15,6 +15,11 @@ var UserModel = {
   create: function(data, callback) {
     users.create(data, callback);
   },
+
+  getById: function(userid, callback) {
+    users.find({ _id: userid }, callback);
+  },
+
   getByUsername: function(username, callback) {
     users.find({ username: username }, callback);
   },
