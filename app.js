@@ -6,8 +6,7 @@ var UserModel = require('./models/users.model');
 var config = require('./config');
 require('./lib/db.js');
 
-
-app.use(bodyParser.urlencoded({extended : true}));
+app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 
 app
