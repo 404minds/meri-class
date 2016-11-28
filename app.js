@@ -13,8 +13,8 @@ app
   .use(expressJwt({ secret: config.jwt.secret, requestProperty: 'payload' })
   .unless({
     path: [
-      '/api/token',
-      '/api/user',
+      { url: '/api/token', methods: ['POST'] },
+      { url: '/api/user', methods: ['POST'] },
       '/api/student',
       '/api/attendence',
     ],
