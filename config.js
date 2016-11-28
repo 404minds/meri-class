@@ -1,6 +1,6 @@
 module.exports = {
   db: {
-    uri: 'mongodb://localhost/mericlass',
+    uri: process.env.MONGODB_URI,
   },
   jwt: {
     secret: 'meri class secret',
