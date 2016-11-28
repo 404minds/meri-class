@@ -4,9 +4,9 @@ var StudentModel = require('./../../models/students.model');
 
 router.post('/', function(req, res) {
   
-  StudentModel.create(req.body, function(err, students) {
+  StudentModel.create(req.body, function(err, student) {
     if (!err) {
-      res.location(`/api/class/${students[0]._id}`);
+      res.location(`/api/class/${student._id}`);
       res.sendStatus(201);
       return;
     }
