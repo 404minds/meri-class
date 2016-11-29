@@ -1,5 +1,6 @@
 var express = require('express');
 var router = express.Router();
+var Promise = require("bluebird");
 var ClassModel = require('./../../models/classes.model');
 var StudentClassModel = require('./../../models/students_classes.model');
 
@@ -17,7 +18,23 @@ router.post('/', function(req, res) {
 router.get('/', function(req, res) {
   ClassModel.list(function(err, classes) {
     if (!err && Array.isArray(classes)) {
-      res.json(classes);
+      var getStudentsCountByClassIdAsync = Promise.promisify(StudentClassModel.getStudentsCountByClassId);
+
+      function onGetStudentsCount(index, count) {
+        classes[index] = classes[index].toObject();
+
+        return classes[index].studentCount = count;
+      }
+
+      Promise.each(classes, function(classObj, index) {
+        getStudentsCountByClassIdAsync(classObj._id)
+          .then(function(count) {
+            return onGetStudentsCount(index, count);
+          })
+          .then(function() {
+            res.json(classes);
+          });
+      });
     } else {
       res.sendStatus(500);
     }
