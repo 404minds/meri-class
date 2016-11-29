@@ -26,6 +26,10 @@ var StudentClassModel = {
       .populate('student')
       .exec(callback);
   },
+
+  getStudentsCountByClassId: function(classid, callback) {
+    studentClass.count({ class: classid }, callback);
+  },
 };
 
 module.exports = StudentClassModel;
