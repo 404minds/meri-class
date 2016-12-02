@@ -20,20 +20,16 @@ router.get('/', function(req, res) {
     if (!err && Array.isArray(classes)) {
       var getStudentsCountByClassIdAsync = Promise.promisify(StudentClassModel.getStudentsCountByClassId);
 
-      function onGetStudentsCount(index, count) {
-        classes[index] = classes[index].toObject();
-
-        return classes[index].studentCount = count;
-      }
-
       Promise.each(classes, function(classObj, index) {
-        getStudentsCountByClassIdAsync(classObj._id)
+        return getStudentsCountByClassIdAsync(classObj._id)
           .then(function(count) {
-            return onGetStudentsCount(index, count);
-          })
-          .then(function() {
-            res.json(classes);
+            classes[index] = classes[index].toObject();
+
+            return classes[index].studentCount = count;
           });
+      })
+      .then(function(allitems) {
+        res.json(classes);
       });
     } else {
       res.sendStatus(500);
