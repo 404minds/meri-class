@@ -21,12 +21,13 @@ app
 app.use(function(req, res, next) {
   // For un-authenticated requests
   if (!req.payload) {
-    next();
-    return;
+    return next();
   }
   var userid = req.payload.sub;
   UserModel.getById(userid, function(err, users) {
-    if (err || !users.length) next(err);
+    if (err || !users.length) {
+      return res.sendStatus(401);
+    }
     req.user = users[0];
     next();
   });
