@@ -23,4 +23,14 @@ router.get('/', function(req, res) {
   });
 });
 
+router.put('/:studentid', function(req, res) {
+  StudentModel.updateById(req.params.studentid, req.body, function(err, result) {
+    if (!err && result.ok) {
+      res.sendStatus(200);
+    } else {
+      res.sendStatus(500);
+    }
+  });
+});
+
 module.exports = router;

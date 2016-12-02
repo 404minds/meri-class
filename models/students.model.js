@@ -27,6 +27,10 @@ var StudentModel = {
     students.find({ _id: studentid }, callback);
   },
 
+  updateById: function(studentid, data, callback) {
+    students.update({ _id: studentid }, data, callback);
+  },
+
   list: function(callback) {
     students.find({}, callback);
   },
