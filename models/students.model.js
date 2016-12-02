@@ -5,6 +5,7 @@ var studentsSchema = new Schema({
   roll_no: String,
   name: String,
   date_of_birth: Date,
+  gender: String,
   user: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'users',
