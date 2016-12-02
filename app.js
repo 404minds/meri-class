@@ -15,8 +15,6 @@ app
     path: [
       { url: '/api/token', methods: ['POST'] },
       { url: '/api/user', methods: ['POST'] },
-      '/api/student',
-      '/api/attendence',
     ],
   }));
 
